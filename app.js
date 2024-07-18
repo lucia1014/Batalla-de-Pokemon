@@ -12,14 +12,14 @@ class Pokemon {
     // Cuando yo defini un metodo necesito pensar en las siguientes cosas:
     // - La accion a realizar
     // - Que info necesito para realizar esa accion.
-    /* atacar(pokemon) {
+    atacar(pokemon) {
         console.log('------Comenzando ataque-------');
         console.log(`El ${this.nombre} esta atacando a ${pokemon.nombre}`);
         console.log(`El nivel de vida de ${pokemon.nombre} ANTES del ataque es : ${pokemon.nivelDeVida}`);
         console.log(`Atacando con nivel de ataque ${this.nivelAtaque}...`);
         pokemon.nivelDeVida -= this.nivelAtaque;
         console.log(`El nivel de vida de ${pokemon.nombre} DESPUES del ataque es : ${pokemon.nivelDeVida}`);
-    } */
+    }
 }
 
 // Para crear una clase hija necesitamos conocer la clase padre y crear una relacion entre ellas
@@ -40,6 +40,10 @@ class PokemonFuego extends Pokemon {
         pokemon.nivelDeVida -= this.nivelAtaque;
         console.log(`El nivel de vida de ${pokemon.nombre} DESPUES del ataque de fuego ${this.colorDeFlama} es: ${pokemon.nivelDeVida}`);
     }
+/* //Sobreescritura -> 
+    atacar(pokemon){
+        this.
+    } */
 }
 
 class PokemonAgua extends Pokemon {
@@ -94,8 +98,9 @@ class PokemonElectrico extends Pokemon {
 }
 
 function batalla(pokemon1, pokemon2) {
-    const atacar = (atacante, oponente) => {
-      if (atacante instanceof PokemonFuego) {
+    const pelear = (atacante, oponente) => {
+        //instanceof -> <objeto> instanceof <la clase a revisar>
+      if (atacante instanceof PokemonFuego) { //instanceof se utiliza cuando necesite confirmar el tipo de un objeto en tiempo de ejecución.
         atacante.lanzarFuego(oponente);
       } else if (atacante instanceof PokemonAgua) {
         atacante.lanzarAgua(oponente);
@@ -106,8 +111,8 @@ function batalla(pokemon1, pokemon2) {
       }
     };
   
-    atacar(pokemon1, pokemon2);
-    atacar(pokemon2, pokemon1);
+    pelear(pokemon1, pokemon2);
+    pelear(pokemon2, pokemon1);
   }
 
 
